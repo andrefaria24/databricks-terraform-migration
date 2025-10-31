@@ -1,12 +1,11 @@
-// cross-account ARN
+# cross-account ARN
 resource "databricks_mws_credentials" "aws" {
   #provider         = databricks
-  account_id       = var.databricks_account_id
   credentials_name = "aws_credentials"
   role_arn         = var.databricks_aws_role_arn
 }
 
-// register root bucket
+# register root bucket
 resource "databricks_mws_storage_configurations" "aws" {
   #provider                   = databricks
   account_id                 = var.databricks_account_id
@@ -14,7 +13,7 @@ resource "databricks_mws_storage_configurations" "aws" {
   bucket_name                = var.databricks_aws_root_bucket
 }
 
-# // register VPC
+# register VPC
 resource "databricks_mws_networks" "aws" {
   #provider           = databricks
   account_id         = var.databricks_account_id
@@ -24,7 +23,7 @@ resource "databricks_mws_networks" "aws" {
   security_group_ids = var.aws_sg
 }
 
-# // create workspace in given VPC with DBFS on root bucket
+# create workspace in given VPC with DBFS on root bucket
 resource "databricks_mws_workspaces" "aws" {
   #provider       = databricks
   account_id     = var.databricks_account_id
